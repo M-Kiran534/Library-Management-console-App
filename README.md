@@ -13,4 +13,6 @@ v2-MLMS
 >
 >User can see their Backpack of taken Books.
 >
->Admistrator can able to add and see the member and Book in the Library.
+>Admistrator can able to add Books and update book Status.
+>
+>Admin cam able to see the members and Books in the Library.
