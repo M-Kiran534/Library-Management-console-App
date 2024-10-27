@@ -1,13 +1,14 @@
 package com.LibraryManagement;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Member {
 	private Integer memberId;
 	private String name;
 	private String email;
-	private ArrayList<Book> borrowedBooks;
+	private List<Book> borrowedBooks = new ArrayList<Book>();
 	
 	public Member(Integer memberId, String name, String email) {
 		setMemberId(memberId);
@@ -15,6 +16,10 @@ public class Member {
 		setEmail(email);
 	}	
 	
+	public List<Book> getBorrowedBooks() {
+		return borrowedBooks;
+	}
+
 	public Member(Integer memberId, String name) {
 		this.memberId = memberId;
 		this.name = name;
@@ -44,17 +49,22 @@ public class Member {
 		this.email = email;
 	}
 
-	public void borrow(Book b) {
+	public boolean borrow(Book b) {
 		if(b.isAvailable()) {
 			borrowedBooks.add(b);
+			b.setAvailable(false);
+			return true;
 		}
 		else {
 			System.out.println("Sorry for inconvinience Book not available...");
+			return false;
 		}
 	}
 	
 	public void returnBook(Book b) {
 		borrowedBooks.remove(b);
+		b.setAvailable(true);
+		System.out.println("Successfully returned");
 	}
 
 	@Override
