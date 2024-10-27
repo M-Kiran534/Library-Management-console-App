@@ -13,6 +13,11 @@ public class Book implements Comparable<Book>{
 		setTitle(title);
 		setGenre(genre);
 	}
+	
+	public Book(Integer bookId, String title, String author, String genre, boolean isAvailable) {
+		this(bookId,title,author,genre);
+		setAvailable(isAvailable);
+	}
 
 	public int getBookId() {
 		return bookId;
@@ -56,16 +61,20 @@ public class Book implements Comparable<Book>{
 
 	public void borrowBook() {
 		setAvailable(false);
-		;
 	}
 
 	public void returnBook() {
 		setAvailable(true);
 	}
+	
+	public String showDetails() {
+		return "BookId=" + this.bookId + "\ntitle=" + this.title + "\nauthor=" + this.author + 
+				"\ngenre=" + this.genre + "\n" + this.isAvailable + "\n";
+	}
 
 	@Override
 	public String toString() {
-		return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", genre=" + genre + "]\n";
+		return "ID: "+this.bookId+"Title: "+this.title+"\n";
 	}
 
 	@Override
